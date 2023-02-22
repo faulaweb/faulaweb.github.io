@@ -2,14 +2,20 @@
 <html>
 <head>
 	<title>My Website</title>
+	<script src="script.js"></script>
+	<!-- Add a custom protocol handler for the "discord://" protocol -->
+	<script>
+		(function() {
+			if (window.navigator.userAgent.includes("Discord")) {
+				const link = document.createElement("a");
+				link.href = "discord://open";
+				document.body.appendChild(link);
+				link.click();
+			}
+		})();
+	</script>
 </head>
 <body>
-
 	<h1>Welcome to my website</h1>
-    <script src="main.js"></script>
-
-
-
-
 </body>
 </html>
